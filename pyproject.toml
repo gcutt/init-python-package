@@ -9,3 +9,4 @@ description = "A Python package scaffold"
 authors = [{ name = "Your Name" }]
 readme = "README.md"
 dependencies = []
+license = { text = "Apache-2.0" }
