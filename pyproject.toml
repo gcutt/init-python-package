@@ -1,0 +1,11 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "init_python_package"
+version = "0.1.0"
+description = "A Python package scaffold"
+authors = [{ name = "Your Name" }]
+readme = "README.md"
+dependencies = []

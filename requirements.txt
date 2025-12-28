@@ -1,0 +1,9 @@
+# Project dependencies
+pathlib
+#numpy
+#pandas
+#python-dateutil
+#pytz
+#scipy
+#fastapi
+#uvicorn
