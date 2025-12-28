@@ -14,15 +14,17 @@ Clone the repository and run the initializer:
 ```bash
 git clone https://github.com/your-username/init-py-pkg.git
 cd init-py-pkg
-python init_pkg.py
 ```
 
 ## Usage
-Run the initializer to scaffold a new package:
+Run the initializer to scaffold a new package, e.g.:
 
 ```bash
-python init_pkg.py my_new_package
+python init_pkg.py ~/path/to/my_new_package 
 ```
+
+where ~/path/to/my_new_package is the full path to the package. 
+
 
 This will generate:
 - `my_new_package/`
