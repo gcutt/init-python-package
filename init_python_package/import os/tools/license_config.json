@@ -1,0 +1,5 @@
+{
+  "header": "Apache-2.0",
+  "files": ["*.py"],
+  "enforce": true
+}
