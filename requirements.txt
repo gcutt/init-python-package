@@ -1,5 +1,8 @@
 # Project dependencies
 pathlib
+unittest
+tempfile
+shutil
 #numpy
 #pandas
 #python-dateutil
