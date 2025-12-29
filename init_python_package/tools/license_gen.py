@@ -1,41 +1,11 @@
 from pathlib import Path
-import os
 
-PRECOMMIT = """repos:
-- repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.5.0
-  hooks:
-    - id: trailing-whitespace
-    - id: end-of-file-fixer
-    - id: check-yaml
-    - id: check-added-large-files
+APACHE_LICENSE_TEXT = """\
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
 
-- repo: https://github.com/psf/black
-  rev: 23.9.1
-  hooks:
-    - id: black
-      language_version: python3.12
-
-- repo: https://github.com/PyCQA/isort
-  rev: 5.12.0
-  hooks:
-    - id: isort
-
-- repo: local
-  hooks:
-    - id: check-apache-header
-      name: Check Apache License Header
-      entry: python tools/check_apache_header.py
-      language: system
-      files: \\.py$
-"""
-
-LICENSE = """Apache License
-Version 2.0, January 2004
-http://www.apache.org/licenses/
-
-TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
-
+TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION:
 
    1. Definitions.
 
@@ -234,151 +204,10 @@ TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
    limitations under the License.
 """
 
-PYPROJECT = """[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "{pkgname}"
-version = "0.1.0"
-description = "A Python package scaffold"
-authors = [{{ name = "Your Name" }}]
-readme = "README.md"
-dependencies = []
-
-[tool.black]
-line-length = 88
-
-[tool.isort]
-profile = "black"
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-"""
-
-# README = """# {pkgname}
-# #
-# # ![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)
-# # ![Python](https://img.shields.io/badge/python-3.12%2B-blue)
-# #
-# # A lightweight initializer for Python packages...
-# """
-
-
-# README_TEXT = """# init-python-package
-# A lightweight initializer for Python packages, designed to scaffold reproducible, transparent, and user-friendly repositories.
-#
-# ## Features
-# - Generates a complete PyPI-ready package structure
-# - Includes `README.md`, `LICENSE`, and `pyproject.toml`
-# - IDE-neutral `.gitignore` for clean collaboration
-# - Modular design for optional flows and diagnostics
-# - Emphasis on reproducibility, auditability, and onboarding clarity
-#
-# ## Installation
-# Clone the repository and run the initializer:
-#
-# ```bash example:
-# git clone https://github.com/your-username/init-py-pkg.git
-# cd init-py-pkg
-# ```
-#
-# where ~/path/to/my_new_package is the full path to the package.
-#
-# This will generate, e.g.:
-# - `my_new_package/`
-#   - `__init__.py`
-#   - `README.md`
-#   - `LICENSE`
-#   - `pyproject.toml`
-#   - `.gitignore`
-#   - `/tools`
-#   - `/test`
-#   - `/scripts`
-#   - `/notebooks`
-#   - `/data`
-#
-# ## Contributing
-# Contributions are welcome! Please open issues or submit pull requests to improve usability, diagnostics, or documentation clarity.
-#
-# ## Author
-#
-# This project was created and is maintained by **George Cutter**.
-# George is a systems thinker and open‑source advocate, focused on building reproducible, transparent, and user‑empowering scientific workflows. His work emphasizes modularity, auditability, and contributor onboarding clarity.
-#
-# ## Disclaimer
-#
-# - This software is provided **“as is”**, without warranty of any kind, express or implied.
-# - The author assumes **no responsibility** for errors, omissions, or outcomes resulting from the use of this code.
-# - Users are encouraged to validate results independently and adapt workflows to their own requirements.
-# - Contributions are welcome, but all contributors agree that their input will be licensed under the same terms as the project.
-# - This project is intended for **educational and research purposes**. It should not be used as a substitute for professional advice in regulated domains (e.g., medical, legal, financial).
-#
-# ## License
-#
-# This project is licensed under the **Apache License 2.0**.
-# You may use, modify, and distribute this software under the terms of the Apache License.
-# See the [LICENSE](LICENSE) file for the full text.
-#
-# ### License Compatibility Note
-#
-# - Contributions are accepted under the same license.
-# - The license includes explicit **patent rights protection**, ensuring contributors grant users rights to any patents necessarily infringed by their contributions.
-# - Redistribution and derivative works are permitted, provided that the Apache 2.0 terms are followed.
-# - Apache 2.0 is permissive, allowing integration with both open‑source and proprietary projects, while maintaining strong safeguards against patent litigation.
-# """
-
-
-GITIGNORE = """__pycache__/
-*.py[cod]
-.venv/
-env/
-venv/
-build/
-dist/
-*.egg-info/
-.ipynb_checkpoints/
-*.log
-.DS_Store
-Thumbs.db
-"""
-
-REQUIREMENTS = """# Project dependencies
-pathlib
-#numpy
-#pandas
-#python-dateutil
-#pytz
-#scipy
-#fastapi
-#uvicorn
-##unittest  # Python standard library
-##tempfile  # Python standard library
-##shutil    # Python standard library
-"""
-
-BASH_SCRIPT = """#!/bin/bash
-python3.12 -m venv .venv
-source .venv/bin/activate
-pip install --upgrade pip
-pip install -r requirements.txt
-"""
-
-BAT_SCRIPT = """@echo off
-python3.12 -m venv .venv
-call .venv\\Scripts\\activate
-pip install --upgrade pip
-pip install -r requirements.txt
-"""
-
-def write_metadata(project_root: Path, pkgname: str):
-    (project_root / ".pre-commit-config.yaml").write_text(PRECOMMIT, encoding="utf-8")
-    (project_root / "LICENSE").write_text(LICENSE, encoding="utf-8")
-    (project_root / "pyproject.toml").write_text(PYPROJECT.format(pkgname=pkgname), encoding="utf-8")
-    # (project_root / "README.md").write_text(README_TEXT.format(pkgname=pkgname), encoding="utf-8")
-    (project_root / ".gitignore").write_text(GITIGNORE, encoding="utf-8")
-    (project_root / "requirements.txt").write_text(REQUIREMENTS, encoding="utf-8")
-    (project_root / "setup_env.sh").write_text(BASH_SCRIPT, encoding="utf-8")
-    os.chmod(project_root / "setup_env.sh", 0o755)
-    (project_root / "setup_env.bat").write_text(BAT_SCRIPT, encoding="utf-8")
-    print("Created metadata files")
+def write_license_file(project_root: Path) -> None:
+    """
+    Write the Apache-2.0 LICENSE file into the new package root.
+    """
+    license_path = project_root / "LICENSE"
+    license_path.write_text(APACHE_LICENSE_TEXT, encoding="utf-8")
+    print(f"Created LICENSE at {license_path}")
