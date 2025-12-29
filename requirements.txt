@@ -1,8 +1,5 @@
 # Project dependencies
 pathlib
-unittest
-tempfile
-shutil
 #numpy
 #pandas
 #python-dateutil
@@ -10,3 +7,7 @@ shutil
 #scipy
 #fastapi
 #uvicorn
+#
+#unittest  # Python standard library
+#tempfile  # Python standard library
+#shutil  # Python standard library

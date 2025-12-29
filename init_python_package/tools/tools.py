@@ -65,25 +65,59 @@ if __name__ == "__main__":
     main()
 """
 
-def write_tools(project_root: Path):
+
+from pathlib import Path
+
+def write_tools(project_root: Path, pkgname: str) -> None:
     """
-    Create the tools folder and populate with utility scripts.
+    Create a 'tools' directory inside the generated package.
+
+    Args:
+        project_root (Path): The root directory where the new package scaffold is being created.
+        pkgname (str): The name of the package directory under project_root
+                       (e.g. 'my_test_package'), where 'tools' will be placed.
+
+    Returns:
+        None
     """
-    tools_path = project_root / "tools"
-    tools_path.mkdir(exist_ok=True)
+    tools_dir = project_root / pkgname / "tools"
+    tools_dir.mkdir(parents=True, exist_ok=True)
 
-    # Write simple tools
-    for fname, content in TOOLS_SCRIPTS.items():
-        fpath = tools_path / fname
-        fpath.write_text(content, encoding="utf-8")
-        if fname.endswith(".sh"):
-            os.chmod(fpath, 0o755)
-        print(f"Created tool: {fpath}")
+    # Example: write helper files
+    (tools_dir / "lint.sh").write_text("#!/bin/bash\nflake8 ..\n")
+    (tools_dir / "diagnostics.py").write_text(
+        "def run_diagnostics():\n    print('Diagnostics running...')\n"
+    )
+    (tools_dir / "check_apache_header.py").write_text(
+        "def check_header(file_path):\n    print(f'Checking header in {file_path}')\n"
+    )
+    (tools_dir / "license_config.json").write_text('{"license": "Apache-2.0"}')
 
-    # Write check_apache_header.py
-    (tools_path / "check_apache_header.py").write_text(APACHE_HEADER + "\n" + CHECK_APACHE, encoding="utf-8")
-    print(f"Created tool: {tools_path / 'check_apache_header.py'}")
 
-    # Write license_config.json
-    (tools_path / "license_config.json").write_text(LICENSE_CONFIG, encoding="utf-8")
-    print(f"Created tool: {tools_path / 'license_config.json'}")
+
+
+
+
+## old
+# def write_tools(project_root: Path):
+#     """
+#     Create the tools folder and populate with utility scripts.
+#     """
+#     tools_path = project_root / "tools"
+#     tools_path.mkdir(exist_ok=True)
+#
+#     # Write simple tools
+#     for fname, content in TOOLS_SCRIPTS.items():
+#         fpath = tools_path / fname
+#         fpath.write_text(content, encoding="utf-8")
+#         if fname.endswith(".sh"):
+#             os.chmod(fpath, 0o755)
+#         print(f"Created tool: {fpath}")
+#
+#     # Write check_apache_header.py
+#     (tools_path / "check_apache_header.py").write_text(APACHE_HEADER + "\n" + CHECK_APACHE, encoding="utf-8")
+#     print(f"Created tool: {tools_path / 'check_apache_header.py'}")
+#
+#     # Write license_config.json
+#     (tools_path / "license_config.json").write_text(LICENSE_CONFIG, encoding="utf-8")
+#     print(f"Created tool: {tools_path / 'license_config.json'}")

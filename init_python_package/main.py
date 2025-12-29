@@ -1,9 +1,9 @@
 from pathlib import Path
-from tools.scaffold import scaffold_structure
-from tools.tools import write_tools
-from tools.metadata import write_metadata
-from tools.headers import write_python_files_with_header
-
+# #old# from tools.headers import write_python_files_with_header
+from init_python_package.tools.scaffold import scaffold_structure
+from init_python_package.tools.tools import write_tools
+from init_python_package.tools.metadata import write_metadata
+from init_python_package.tools.headers import write_python_files_with_header
 
 def run_initializer(project_root: Path):
     """
@@ -15,7 +15,7 @@ def run_initializer(project_root: Path):
     pkgname = project_root.name.replace("-", "_")
 
     scaffold_structure(project_root, pkgname)
-    write_tools(project_root)
+    write_tools(project_root, pkgname)
     write_metadata(project_root, pkgname)
     write_python_files_with_header(project_root, pkgname)
 
