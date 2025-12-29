@@ -345,6 +345,16 @@ Thumbs.db
 
 REQUIREMENTS = """# Project dependencies
 pathlib
+#numpy
+#pandas
+#python-dateutil
+#pytz
+#scipy
+#fastapi
+#uvicorn
+##unittest  # Python standard library
+##tempfile  # Python standard library
+##shutil    # Python standard library
 """
 
 BASH_SCRIPT = """#!/bin/bash
