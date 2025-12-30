@@ -72,9 +72,10 @@ This creates a new folder with a complete Python package structure, including:
 
 ## 🗂️ Generated Package Structure
 
+<pre><code>```
 my_new_package/
 ├── my_new_package/           # Importable Python package
-│   ├── __init__.py           # Includes dynamic __version__
+│   ├── __init__.py           # Includes dynamic version
 │   ├── main.py               # CLI entry point
 │   └── tools/                # Helper modules
 ├── tests/                    # pytest-ready test folder
@@ -87,6 +88,9 @@ my_new_package/
 ├── .gitignore
 ├── requirements.txt
 ├── setup_env.bat / .sh       # Optional environment setup
+```
+</code></pre>
+
 
 ## Contributing
 Contributions are welcome! Please open issues or submit pull requests to improve usability, diagnostics, or documentation clarity.

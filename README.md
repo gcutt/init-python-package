@@ -1,5 +1,12 @@
 # init-python-package
-A lightweight initializer for Python packages, designed to scaffold reproducible, transparent, and user-friendly repositories.
+
+Minimal, distribution-ready Python package scaffolding.  
+Generate projects that are instantly installable with pip and publishable to PyPI.
+
+init-python-package helps you bootstrap Python projects with a ready-to-publish structure:
+- Editable install support (`pip install -e .`)
+- PyPI-compliant metadata (`pyproject.toml`, SPDX license, README)
+- Preconfigured tests, scripts, and notebooks
 
 ## Features
 - Generates a complete PyPI-ready package structure
@@ -9,29 +16,78 @@ A lightweight initializer for Python packages, designed to scaffold reproducible
 - Emphasis on reproducibility, auditability, and onboarding clarity
 
 ## Installation
-Clone the repository and run the initializer:
+
+Clone the repository and set up your environment:
 
 ```bash
-git clone https://github.com/your-username/init-py-pkg.git
-cd init-py-pkg
+git clone https://github.com/your-username/init-python-package.git
+cd init-python-package
+./setup_env.sh        # or setup_env.bat on Windows
+pip install -e .
 ```
 
-## Usage
-Run the initializer to scaffold a new package, e.g.:
+Alternatively, users can manually create and activate a virtual environment if they prefer.
+
+## 📦 Usage
+
+After installation, you can run the scaffolder in two ways:
+
+### 1. Command Line (CLI)
+Run directly from your terminal:
 
 ```bash
-python init_pkg.py ~/path/to/my_new_package 
+init-python-package my_new_package
 ```
 
-where ~/path/to/my_new_package is the full path to the package. 
+where `my_new_package` is the full path to the package. 
 
-This will generate:
-- `my_new_package/`
-  - `__init__.py`
-  - `README.md`
-  - `LICENSE`
-  - `pyproject.toml`
-  - `.gitignore`
+
+- Creates a new package at the given path (`my_new_package`).
+- If you omit the path, the tool runs in **interactive mode** and prompts you for the package location.
+
+### 2. Interactive Mode (default)
+Simply run:
+
+```bash
+init-python-package
+```
+
+You’ll be prompted to enter the full path for your new package.
+
+### 3. From an IDE
+You can also run the CLI entry point from your IDE’s integrated terminal (e.g. VS Code, PyCharm).  
+Open the terminal inside your project workspace and run the same commands as above.
+
+---
+
+This creates a new folder with a complete Python package structure, including:
+- Metadata (`pyproject.toml`, `README.md`, `LICENSE`)
+- Importable package directory (`my_new_package/`)
+- CLI entry point (`my_new_package/main.py`)
+- Test scaffolding (`tests/`)
+- Supporting folders (`scripts/`, `notebooks/`, `data/`)
+
+
+## 🗂️ Generated Package Structure
+
+<pre><code>```
+my_new_package/
+├── my_new_package/           # Importable Python package
+│   ├── __init__.py           # Includes dynamic version
+│   ├── main.py               # CLI entry point
+│   └── tools/                # Helper modules
+├── tests/                    # pytest-ready test folder
+├── scripts/                  # Example scripts
+├── notebooks/                # Example notebooks
+├── data/                     # Data folder
+├── README.md                 # PyPI-ready long description
+├── LICENSE                   # Apache-2.0 license
+├── pyproject.toml            # Build metadata
+├── .gitignore
+├── requirements.txt
+├── setup_env.bat / .sh       # Optional environment setup
+```
+</code></pre>
 
 
 ## Contributing
