@@ -345,6 +345,7 @@ Thumbs.db
 
 REQUIREMENTS = """# Project dependencies
 pathlib
+build
 #numpy
 #pandas
 #python-dateutil
