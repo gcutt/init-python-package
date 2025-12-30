@@ -13,7 +13,18 @@ APACHE_HEADER = """# Licensed under the Apache License, Version 2.0 (the "Licens
 # limitations under the License.
 """
 
-INIT_PY = "\"\"\"Top-level package for {pkgname}.\"\"\""
+# INIT_PY = "\"\"\"Top-level package for {pkgname}.\"\"\""
+
+INIT_PY = """\"\"\"Top-level package for {pkgname}.\"\"\"
+
+from importlib.metadata import version, PackageNotFoundError
+
+try:
+    __version__ = version(__name__)
+except PackageNotFoundError:
+    __version__ = "0.0.0"  # fallback for local dev
+"""
+
 
 PACKAGE_MAIN = """def hello_world():
     \"\"\"Example function to demonstrate project structure.\"\"\" 

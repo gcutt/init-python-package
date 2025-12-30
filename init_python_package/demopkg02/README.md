@@ -1,6 +1,4 @@
-from pathlib import Path
-
-README_TEXT = """# init-python-package
+# init-python-package
 
 Minimal, distribution-ready Python package scaffolding.  
 Generate projects that are instantly installable with pip and publishable to PyPI.
@@ -116,11 +114,3 @@ See the [LICENSE](LICENSE) file for the full text.
 - The license includes explicit **patent rights protection**, ensuring contributors grant users rights to any patents necessarily infringed by their contributions.  
 - Redistribution and derivative works are permitted, provided that the Apache 2.0 terms are followed.  
 - Apache 2.0 is permissive, allowing integration with both open‑source and proprietary projects, while maintaining strong safeguards against patent litigation.
-"""
-
-
-def write_readme_md(project_root: Path, pkgname: str) -> None:
-    content = README_TEXT.format(pkgname=pkgname)
-    readme_path = project_root / "README.md"
-    readme_path.write_text(content, encoding="utf-8")
-    print(f"Created README.md at {readme_path}")
