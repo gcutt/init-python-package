@@ -10,33 +10,57 @@ starting point for building your own Python projects.
 
 ## 🚀 Getting Started
 
-### Installation
+If you successfully ran init-python-package, using e.g.  
+
 ```bash
-pip install {pkgname}
+init-python-package my_new_package
+```
+where `my_new_package` is the full path to the package.
+
+
+## 📂 Project Structure
+
+## 🗂️ Generated Package Structure
+
+<pre><code>```
+my_new_package/
+├── my_new_package/           # Importable Python package
+│   ├── __init__.py           # Includes dynamic version
+│   ├── main.py               # CLI entry point
+│   └── tools/                # Helper modules
+├── tests/                    # pytest-ready test folder
+├── scripts/                  # Example scripts
+├── notebooks/                # Example notebooks
+├── data/                     # Data folder
+├── README.md                 # PyPI-ready long description
+├── LICENSE                   # Apache-2.0 license
+├── pyproject.toml            # Build metadata
+├── .gitignore
+├── requirements.txt
+├── setup_env.bat / .sh       # Optional environment setup
+```
+</code></pre>
+
+
+
+### Installation of your new package
+```bash
+pip install {my_new_package}
 ```
 
 ### Run the app
 ```bash
-python -m {pkgname}.main
+python -m {my_new_package}.main
 ```
 
-This will execute the default "hello world" example.
+## License
 
-## 📂 Project Structure
-...
+This project is licensed under the **Apache License 2.0**.  
+You may use, modify, and distribute this software under the terms of the Apache License.  
+See the [LICENSE](LICENSE) file for the full text.
+
 """
 
-# def write_readme_md(pkgname: str, target_dir: Path) -> None:
-#     readme_path = target_dir / "README.md"
-#     content = README_TEMPLATE.format(pkgname=pkgname)
-#     readme_path.write_text(content)
-
-
-# def write_readme_md(project_root: Path, pkgname: str) -> None:
-#     content = README_TEMPLATE.format(pkgname=pkgname)
-#     readme_path = project_root / "README.md"
-#     readme_path.write_text(content, encoding="utf-8")
-#     print(f"Created README.md at {readme_path}")
 
 def write_readme_md(project_root: Path, pkgname: str) -> None:
     content = README_TEMPLATE.format(pkgname=pkgname)
@@ -47,6 +71,9 @@ def write_readme_md(project_root: Path, pkgname: str) -> None:
 
 
 
+
+
+## old
 # from pathlib import Path
 #
 # README_TEXT = """# init-python-package
