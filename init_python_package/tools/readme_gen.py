@@ -45,12 +45,12 @@ my_new_package/
 
 ### Installation of your new package
 ```bash
-pip install {my_new_package}
+pip install {pkgname}
 ```
 
 ### Run the app
 ```bash
-python -m {my_new_package}.main
+python -m {pkgname}.main
 ```
 
 ## License
