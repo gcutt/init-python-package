@@ -34,6 +34,8 @@ Run directly from your terminal:
 
 ```bash
 init-python-package my_new_package
+-or-
+init_python_package my_new_package
 ```
 
 Argument ```my_new_package``` is the full path to the generated package. If you omit the path arg, the tool runs in **interactive mode** and prompts you for the package location.
