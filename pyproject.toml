@@ -1,21 +1,24 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "init_python_package"
-version = "0.1.5"
+version = "0.1.6"
 description = "A Python package scaffold"
 authors = [{ name = "George Cutter" }]
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = []
-license = "Apache-2.0"
+license = { text = "Apache-2.0" }
 
 classifiers = [
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent"
 ]
+
+dependencies = []
 
 [project.optional-dependencies]
 dev = ["pytest", "flake8"]
@@ -24,5 +27,35 @@ dev = ["pytest", "flake8"]
 init-python-package = "init_python_package.main:cli"
 init_python_package = "init_python_package.main:cli"
 
+# --- Modern, correct package discovery ---
 [tool.setuptools.packages.find]
-include = ["init_python_package"]
+include = ["init_python_package*"]
+
+#[build-system]
+#requires = ["setuptools", "wheel"]
+#build-backend = "setuptools.build_meta"
+#
+#[project]
+#name = "init_python_package"
+#version = "0.1.5"
+#description = "A Python package scaffold"
+#authors = [{ name = "George Cutter" }]
+#readme = "README.md"
+#requires-python = ">=3.9"
+#dependencies = []
+#license = "Apache-2.0"
+#
+#classifiers = [
+#    "Programming Language :: Python :: 3",
+#    "Operating System :: OS Independent"
+#]
+#
+#[project.optional-dependencies]
+#dev = ["pytest", "flake8"]
+#
+#[project.scripts]
+#init-python-package = "init_python_package.main:cli"
+#init_python_package = "init_python_package.main:cli"
+#
+#[tool.setuptools.packages.find]
+#include = ["init_python_package"]
